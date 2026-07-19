@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Favorite Person</title>
+    <title>something</title>
     <style>
         body {
             background-color: #1a1a2e;
@@ -128,9 +128,14 @@
 </head>
 <body>
 
+    <!-- BACKGROUND AUDIO ELEMENT -->
+    <audio id="bgMusic" loop>
+        <source src="Stephen Sanchez - Until I Found You (Acoustic).mp3" type="audio/mpeg">
+    </audio>
+
     <!-- STAGE 1: THE MAIN PAGE -->
     <div id="stage1" class="container">
-        <h1>Evlyn... I wrote something for u &lt;3</h1>
+        <h1>Evlyn...I wrote something for u &lt;3</h1>
         <div class="btn-container">
             <button class="action-btn" onclick="goToStage2()">click this to read it</button>
         </div>
@@ -171,7 +176,7 @@
 
     <!-- STAGE 3: THE CONFESSION -->
     <div id="stage3" class="container hidden">
-        <div class="question">can i be your boyfriend? plaease.... ❤️</div>
+        <div class="question">can i be your boyfriend? please....❤️</div>
         <div class="btn-container">
             <button id="yesBtn" onclick="showSuccess()">Yes</button>
             <button id="noBtn" onclick="handleNoClick()">No</button>
@@ -188,8 +193,16 @@
     </div>
 
     <script>
+        // Audio Playback Control
+        function playMusic() {
+            const music = document.getElementById('bgMusic');
+            music.volume = 0.4; // Sets volume to 40% so it's sweet and background-level
+            music.play().catch(error => console.log("Audio playback interaction handled."));
+        }
+
         // Navigation Logic
         function goToStage2() {
+            playMusic(); // Starts the music immediately on user interaction
             document.getElementById('stage1').classList.add('hidden');
             document.getElementById('stage2').classList.remove('hidden');
         }
