@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Favorite Person</title>
+    <style>
+        body {
+            background-color: #1a1a2e;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 35px 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 550px;
+            width: 100%;
+            z-index: 10;
+            transition: all 0.5s ease;
+        }
+
+        h1 {
+            color: #ff4d79;
+            font-size: 2rem;
+            margin-bottom: 25px;
+        }
+
+        .poem {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            font-style: italic;
+            color: #e0e0e0;
+        }
+
+        .poem p {
+            margin: 0 0 20px 0;
+        }
+        
+        .poem p:last-child {
+            margin-bottom: 0;
+        }
+
+        .question {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #ff4d79;
+            margin-bottom: 25px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            min-height: 80px;
+        }
+
+        button {
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .action-btn {
+            background-color: #ff4d79;
+            color: white;
+            padding: 12px 30px;
+            font-size: 1rem;
+        }
+
+        .action-btn:hover {
+            transform: scale(1.05);
+            background-color: #ff3366;
+        }
+
+        #yesBtn {
+            background-color: #ff4d79;
+            color: white;
+            padding: 12px 30px;
+            font-size: 1rem;
+        }
+
+        #noBtn {
+            background-color: #4e4e50;
+            color: white;
+            padding: 12px 30px;
+            font-size: 1rem;
+        }
+
+        /* Floating Hearts Styling */
+        .heart {
+            position: absolute;
+            color: rgba(255, 77, 121, 0.5);
+            font-size: 20px;
+            animation: float 4s linear infinite;
+            bottom: -20px;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-105vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Utility class to hide elements */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- STAGE 1: THE MAIN PAGE -->
+    <div id="stage1" class="container">
+        <h1>Evlyn... I wrote something for u &lt;3</h1>
+        <div class="btn-container">
+            <button class="action-btn" onclick="goToStage2()">click this to read it</button>
+        </div>
+    </div>
+
+    <!-- STAGE 2: THE POEM -->
+    <div id="stage2" class="container hidden">
+        <div class="poem">
+            <p>I never planned to fall this way,<br>
+            It happened slowly, day by day.<br>
+            A simple message, a laugh, a smile,<br>
+            Somehow made every moment worthwhile.</p>
+
+            <p>Though miles may keep our worlds apart,<br>
+            You've found a home inside my heart.<br>
+            Your words can brighten up my sky,<br>
+            Even on days I don't know why.</p>
+
+            <p>I don't know what tomorrow brings,<br>
+            Or where this little story leads.<br>
+            But one thing I know, honest and true,<br>
+            Is that I've fallen hard for you.</p>
+
+            <p>So here's my heart, with nothing to hide,<br>
+            No perfect lines, no mask of pride.<br>
+            If you feel the same, then take my hand,<br>
+            And let's write our story, however it's planned.</p>
+
+            <p>And if your heart chooses another way,<br>
+            I'll still be grateful for every day.<br>
+            Because meeting you has been enough,<br>
+            A beautiful chapter I'll always love.</p>
+        </div>
+        <div class="btn-container">
+            <button class="action-btn" onclick="goToStage3()">click this now...</button>
+        </div>
+    </div>
+
+    <!-- STAGE 3: THE CONFESSION -->
+    <div id="stage3" class="container hidden">
+        <div class="question">can i be your boyfriend? plaease.... ❤️</div>
+        <div class="btn-container">
+            <button id="yesBtn" onclick="showSuccess()">Yes</button>
+            <button id="noBtn" onclick="handleNoClick()">No</button>
+        </div>
+    </div>
+
+    <!-- STAGE 4: SUCCESS SCREEN (UPDATED) -->
+    <div id="stage4" class="container hidden">
+        <h1>Yay! 🥰❤️</h1>
+        <p style='font-size: 1.3rem; line-height: 1.6; color: #e0e0e0; margin-top: 20px;'>
+            I'm so incredibly happy you said yes.<br><br>
+            Go ahead and close this page, your boyfriend is waiting for your text! 🥹✨
+        </p>
+    </div>
+
+    <script>
+        // Navigation Logic
+        function goToStage2() {
+            document.getElementById('stage1').classList.add('hidden');
+            document.getElementById('stage2').classList.remove('hidden');
+        }
+
+        function goToStage3() {
+            document.getElementById('stage2').classList.add('hidden');
+            document.getElementById('stage3').classList.remove('hidden');
+        }
+
+        function showSuccess() {
+            document.getElementById('stage3').classList.add('hidden');
+            document.getElementById('stage4').classList.remove('hidden');
+        }
+
+        // Playful No Button Logic
+        let noClickCount = 0;
+
+        function handleNoClick() {
+            noClickCount++;
+            const yesBtn = document.getElementById('yesBtn');
+            const noBtn = document.getElementById('noBtn');
+
+            if (noClickCount === 1) {
+                noBtn.style.transform = 'scale(0.8)';
+                yesBtn.style.transform = 'scale(1.3)';
+            } else if (noClickCount === 2) {
+                noBtn.style.transform = 'scale(0.6)';
+                yesBtn.style.transform = 'scale(1.7)';
+            } else if (noClickCount >= 3) {
+                noBtn.style.display = 'none';
+                yesBtn.style.transform = 'scale(2.2)';
+            }
+        }
+
+        // Background Hearts Generator
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            heart.style.fontSize = Math.random() * 15 + 15 + 'px';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+        }
+        setInterval(createHeart, 350);
+    </script>
+</body>
+</html>
